@@ -1,0 +1,46 @@
+= Metanorma Editor's Guide
+
+== Scope
+
+Best practices for editing Metanorma documents.
+
+
+== Images
+
+=== Always use lowercase image filenames
+
+If you:
+
+. have a file named `image.PNG`
+. use this line to include it `image::image.png[]`
+
+This will work on macOS and Windows, but will fail on Linux!
+
+Linux uses case-sensitive file systems i.e. `image.PNG` and `image.png` are different file names
+and Metanorma will fail to find the specified `image.png`.
+
+
+== Math
+
+
+=== LaTeX math
+
+Do not use the `eqnarray` environment since it is not supported by `latexmlmath`.
+
+If you want to know if an equation will pass, try this:
+
+`math.lxml`
+[source,latex]
+----
+V = \frac{1}{2} \: {\bf u}^t \:
+            \int_{surface} \: {B'}^t \: D' \: B' \: ds
+               \; {\bf u}
+----
+
+Run:
+
+[source,sh]
+----
+cat math.lxml | latexmlmath -
+----
+
