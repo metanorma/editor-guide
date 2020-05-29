@@ -48,6 +48,8 @@ Sooner or later, you'll have to deal with things like encoding complex tables, e
 
 == Tips
 
+The following tips complement the information exposed in this section: link:https://www.metanorma.com/author/ref/asciidoc-tips/[Metanorma AsciiDoc tips]
+
 === Always use lowercase image filenames
 
 If you:
@@ -63,7 +65,7 @@ and Metanorma will fail to find the specified `image.png`.
 If you are on Windows, and have a bunch of filenames ending in .PNG, there is a straightforward way to change them all at once:
 
 1. Go to the folder where the images are located.
-2. Place the cursor in the bar address and write "cmd". The command line will open on that folder location.
+2. Place the cursor in the bar address, write "cmd" and press ENTER. The command line will open on that folder location.
 3. In the command line, execute the command `ren *.PNG *.png`, and that's it!
 
 
@@ -76,9 +78,9 @@ It is recommended to use AsciiMath whenever it is possible, especially since the
 In case you are not sure whether the written expression is correct and whether it would render well in either AsciiMath or LaTeX math, you can use https://www.mathjax.org/#demo[MathJax Demo] tool to check the output.
 
 
-=== Math
+=== Math arrays
 
-Do not use the `eqnarray` environment since it is not supported by `latexmlmath`.
+Do not use the `eqnarray` environment for arrays since it is not supported by `latexmlmath`.
 
 If you want to know if an equation will pass, try this:
 
@@ -145,12 +147,12 @@ y = x^2
 ++++
 ----
 
-=== Removing tile from sections and subsections
+=== Removing title from sections and subsections
 
-In case some section or subsection needs to be unnumbered and untitled, you can use `{blank}` attribute to achieve that.
+In case some section or subsection needs to be unnumbered and untitled, you can use `\{blank}` attribute to achieve that.
 
 [source,asciidoctor]
-.Example of using `{blank}` attribute
+.Example of using `\{blank}` attribute
 ----
 //Blank section
 == {blank}
@@ -163,7 +165,7 @@ Text
 
 === Escaping characters
 
-Like in normal AsciiDoc, you can escape special characters by prefixing the backslash (`\`) character to the character you want to escape. But, until certain point. There are some cases where this approach will not work. For instance, if you wanted to render a double hyphen `--` instead of an em-dash `—`, you wouldn't be able to do it with "\--" (like in normal Asciidoc). Instead of that, you could use the _Zero Width Non Joiner_ entity `\&#x200c;`, applied like this: `-\&#x200c;-`, which would result in `--`. 
+Like in normal AsciiDoc, you can escape special characters by prefixing the backslash (`\`) character to the character you want to escape. But, until certain point. There are some cases where this approach will not work. For instance, if you wanted to render a double hyphen `--` instead of an em-dash `—`, you wouldn't be able to do it with `\--` (like in normal Asciidoc). Instead of that, you could use the _Zero Width Non Joiner_ entity `\&#x200c;`, applied like this: `-\&#x200c;-`, which would result in `--`. 
 
 In general terms, you can try escaping by using backslash first, and if that doesn't happen to work, use `\&#x200c;` instead.
 
@@ -221,13 +223,13 @@ a| Some text
 |===
 ----
 
-NOTE: When nesting an item list in a table cell, one blank line needs to be present before the first asterix (`*`) or dot (`.`) used as an indicator for the first item on a list.
+NOTE: When nesting an item list in a table cell, one blank line needs to be present before the first asterisk (`*`) or dot (`.`) used as an indicator for the first item on a list.
 
 === Why sometimes I get extremely wide tables in DOC output?
 
 This happens because there is one or more cells containing long string characters that make the table wide beyond the borders of the page. In that case, you would need to include the `:break-up-urls-in-tables:` attribute in the preamble in order to divide in lines any long string characters, and thus, shrink the table.
 
 
-See also: link:https://www.metanorma.com/author/ref/asciidoc-tips/[Metanorma AsciiDoc tips]
+
 
 
