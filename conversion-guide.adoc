@@ -170,6 +170,46 @@ Like in normal AsciiDoc, you can escape special characters by prefixing the back
 In general terms, you can try escaping by using backslash first, and if that doesn't happen to work, use `\&#x200c;` instead.
 
 
+
+=== Avoid using numeric references in Normative reference clause
+
+Numeric references are not allowed inside _Normative references_ clause.
+If a reference cannot be auto-fetched by taking the standard identifier
+as reference tag, any other text can be used.
+
+For example, we can write this:
+
+````
+[bibliography]
+== Normative references
+...
+* [[[netcdf,LLNL NetCDF CF Metadata Conventions]]], Lawrence Livermore National Laboratory: NetCDF CF Metadata Conventions – http://cfconventions.org/
+* [[[acdd,ESIP ACDD]]], ESIP: Attribute Convention for Data Discovery (ACDD) – http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery
+* [[[noaa,NOAA NCEI netCDF Templates]]], NOAA: NCEI netCDF Templates – http://www.nodc.noaa.gov/data/formats/netcdf/
+````
+
+but not this:
+
+````
+[bibliography]
+== Normative references
+...
+* [[[netcdf,1]]], Lawrence Livermore National Laboratory: NetCDF CF Metadata Conventions – http://cfconventions.org/
+* [[[acdd,2]]], ESIP: Attribute Convention for Data Discovery (ACDD) – http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery
+* [[[noaa,3]]], NOAA: NCEI netCDF Templates – http://www.nodc.noaa.gov/data/formats/netcdf/
+````
+
+These cases are only permitted in the _Bibliography_ clause,
+which can contain both generic and standard references.
+
+In some flavors, like OGC, if a numeric reference gets included in the
+_Normative references_ clause, the compiler won't permit document generation.
+In others, document generation will occur but possibly with incorrect results.
+
+For more information about composing references and bibliography,
+visit: https://www.metanorma.org/author/topics/document-format/bibliography/
+
+
 == FAQ
 
 === How can I nest additional content to a list item?
