@@ -1,0 +1,63 @@
+= Best practices for converting documents to Metanorma
+
+This document describes some best practices to bear in mind
+when converting documents from any format to Metanorma AsciiDoc files.
+
+
+== Content in general
+
+* Always remove trailing whitespaces in the converted document.
+
+* Always replace long dashes (—) with their AsciiDoc markup equivalent (`--`).
+
+* Same case for single and double quotes:
+
+** Single quotes:
++
+----
+‘text’ -> '`text`'
+----
+
+** Double quotes:
++
+----
+“text” -> "`text`"
+----
+
+* Always keep lines at no more than 80 characters wide for readability.
+
+
+== Tables
+
+* Tables should not include width attributes. The width in a table is
+automatically laid out by Metanorma.
+
+* In table body cells, split the content of the cell if it surpasses 80
+characters.
+
+* In table header cells, try to keep all the cells in one line unless they
+get too long (over 80 characters).
+
+* In table column attributes, always use `a` column style operator to support
+block elements inside the table, e.g. `[cols="a,2a"]` over `[cols="1,2"]`.
+
+
+== Bibliography and references
+
+* When composing bibliographic references, do not let any blank space
+between the comma (that lies after the anchor) and the reference identifier.
+I.e.:
++
+--
+Instead of this:
+----
+* [[[ogc20-010, OGC 20-010]]]
+----
+
+Do this:
+----
+* [[[ogc20-010,OGC 20-010]]]
+----
+--
+
+
