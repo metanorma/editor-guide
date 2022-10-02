@@ -373,6 +373,18 @@ part:: Validate that the ADE UML model is organized into one or more UML package
 ====
 ----
 
+==== Additional comments about Requirements
+
+* If multiple requirements share the same ID, it means the requirements composing
+is wrong and someone needs to make them unique. In this case, we should add
+an `EDITOR` note to all the incorrect requirements to prevent the author about
+the anomaly, e.g.: `EDITOR: This requirement is assigned a non-unique ID.`.
++
+--
+We allow these note instances during the edition period. The author/editor of
+the document must resolve these before moving forward.
+--
+
 === Further comments
 
 * Source blocks must indicate the type of coding format according
