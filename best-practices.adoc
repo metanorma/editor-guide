@@ -3,11 +3,24 @@
 This document describes some best practices to bear in mind
 when converting documents from any format to Metanorma AsciiDoc files.
 
+== Document organization
+
+To provide easier management and troubleshooting, it is advised to pay
+attention to good document organization. That can be achieved by dividing the
+whole document and even sentences into smaller chunks.
+
+Therefore, the encoding of long documents should be separated into several AsciiDoc files.
+Each main section of the document should be created as one separate file, while
+all preface sections can be kept together. All these files should be placed in one
+directory (e.g. /sections) and named in the format
+`<section-number>-<short-name-of-the-section>.adoc`. Main AsciiDoc file should then include
+all these separated sections using the syntax `include::sections/<file-name>.adoc[]`.
+
+Moreover, it is advised to always keep lines at no more than 80-100 characters wide for readability.
 
 == Content in general
 
 * Always remove trailing whitespaces in the converted document.
-* Always keep lines at no more than 80-100 characters wide for readability.
 * Use small letters when specifying image extensions, e.g. ".jpg", ".png".
 * Use small letters when specifying the type of a source code, e.g. "yaml", "json".
 * Each AsciiDoc file should end with a newline character.
